@@ -1,0 +1,12 @@
+keyboard shortcuts for Kitty terminal emulator
+
+window managment:
+
+cmd+enter : new window
+^+shift+L : change layout
+cmd+r : resize window
+shift+cmd+d : close window
+cmd+X : switch to window X (ex. cmd+1 switched to window 1)
+cmd+n : new OS window of Kitty
+^+shift+f7 : show focused window
+^+shift+f8 : swap with window
