@@ -6,4 +6,9 @@ vim.keymap.set('n', '<leader>gr',function()
         grep_open_files = true,
     });
 end)
+vim.keymap.set('n', '<leader>b', function() 
+    builtin.buffers({
+    sort_mru=true, ignore_current_buffer=true
+});
+end)
 
