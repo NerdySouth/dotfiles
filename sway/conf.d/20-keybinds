@@ -150,3 +150,8 @@ bindsym $mod+b exec DMENU_BLUETOOTH_LAUNCHER=fuzzel dmenu-bluetooth
 # screenshot command
 bindsym $mod+s exec slurp | grim -g -  /home/tristen/Pictures/screenshots/screenshot-$(date +%m-%d-%y-%s).png 
 
+# remap caps lock to ctrl
+input "type:keyboard" {
+    xkb_options caps:ctrl_modifier
+}
+
