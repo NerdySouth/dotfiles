@@ -1,3 +1,3 @@
-function icat --description 'alias icat=kitty +kitten icat'
-  kitty +kitten icat $argv; 
+function icat --wraps='kitty +icat' --description 'alias icat=kitty +icat'
+  kitty +icat $argv; 
 end

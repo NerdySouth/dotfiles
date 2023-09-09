@@ -1,4 +1,4 @@
-;; variables
+ ; variables
 (defpoll batt_state :interval "2s" "./scripts/battery.sh -s")
 (defpoll batt_level :interval "10s" "./scripts/battery.sh -p")
 (defpoll time :interval "5s" "./scripts/date-time.sh -t")
@@ -123,13 +123,20 @@
          :spacing 10
          :space-evenly true
          :orientation "horizontal" 
-         :halign "end" :valign "start" 
+         :halign "end" 
+         :valign "start" 
       
-      (button :onclick "shutdown now" :tooltip "Shutdown" "⏻")
-      (button :onclick "killall Hyprland" "󰍃")
-      (button :onclick "reboot" "")
-      (button :onclick "eww close power_menu && eww open bar" ""))
-    )
+      (button :class "power-btn" 
+              :onclick "shutdown now" 
+              :tooltip "Shutdown" 
+        "⏻")
+      (button :class "logout-btn" 
+              :onclick "killall Hyprland" 
+        "󰍃")
+      (button :class "reboot-btn"
+              :onclick "reboot" 
+        "")
+    ))
 
 
 

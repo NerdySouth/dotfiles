@@ -1,9 +1,9 @@
 # Outputs icon, color, bg_color
 function _tide_detect_os
-    set -lx defaultColor ff79c6 ff79c6
+    set -lx defaultColor 080808 CED7CF
     switch (uname | string lower)
         case darwin
-            printf %s\n  D6D6D6 FF79C6 # from apple.com header
+            printf %s\n  D6D6D6 333333 # from apple.com header
         case freebsd openbsd dragonfly
             printf %s\n  FFFFFF AB2B28 # https://freebsdfoundation.org/about-us/about-the-foundation/project/
         case 'cygwin*'

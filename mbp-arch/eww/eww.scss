@@ -48,18 +48,17 @@ $text: #e0def4;
 }
 
 .charging {
-    background: rgba($gold, 1.0);
+    background: rgba($hl-high, 1.0);
     font-size: 1rem;
     font-weight: bold;
-    color: rgba($hl-high, 1.0);
+    color: rgba($gold, 1.0);
 }
 
 .discharging {
-    background: rgba($foam, 1.0);
+    background: rgba($hl-high, 1.0);
     font-size: 1rem;
     font-weight: bold;
-    color: rgba($hl-high, 1.0);
-
+    color: rgba($foam, 1.0);
 }
 
 .radial-label-batt-charging {
