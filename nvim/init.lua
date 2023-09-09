@@ -121,6 +121,6 @@ vim.keymap.set("n", "<leader>f", ":Neotree reveal toggle<CR>")
 -- coq repl
 vim.g.coq_settings = {
     ["keymap.eval_snips"] = '<leader>r',
-    ["keymap.jump_to_mark"] = '<leader>;' 
+    ["keymap.jump_to_mark"] = '<leader>n' 
 }
 
