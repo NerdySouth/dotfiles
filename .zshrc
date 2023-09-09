@@ -18,6 +18,42 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(... colorize)
 
+export PATH=$HOME/bin/:$PATH
+
+# zig compiler symlinks
+alias zig10=$HOME/bin/zig10/zig
+alias zig9=$HOME/bin/zig9/zig
+
+# llvm14 symlink
+export LLVM14=$HOME/bin/llvm14
+alias clang14=$HOME/bin/llvm14/clang
+
+# add llvm 15 to path 
+export PATH=/opt/homebrew/Cellar/llvm/15.0.3/bin:$PATH
+
+# pi directories
+export CS240LX_2022_PATH=$HOME/Documents/CS240LX-spr22
+export CS140E_2022_PATH=$HOME/Documents/CS140E
+
+# class directories
+export CS106B=$HOME/Documents/Fall2022/CS106B
+export CS149=$HOME/Documents/Fall2022/CS149
+export FALL2022=$HOME/Documents/Fall2022
+
+# CS106B session function for kitty 
+function kt-school() {
+    export CLASS_DIR=$FALL2022/$1
+    echo $CLASS_DIR
+    kitty --session ~/.config/kitty/kitty-sessions/class.conf
+}
+
+# function to start skhd service
+function start_skhd() {
+    echo "Starting SKHD..."
+    skhd & disown
+    echo "SKHD running."
+}
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -106,45 +142,16 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH=~/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
-export PATH="/tmp/texinfo/bin:${PATH}"
-export PATH=/Applications/gtkwave.app/Contents/Resources/bin/:$PATH
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib/"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-. "$HOME/.cargo/env"
-
-
-export CS140E_2022_PATH=/Users/tristennollman/Documents/Winter_Qtr_2022/CS140E/CS140E
-# export CS240LX_2022_PATH=/Users/tristennollman/Documents/Spring_Quarter_2022/CS240LX/CS240LX
-export CS240LX_2022_PATH=/Users/tristennollman/Documents/Spring_Quarter_2022/CS240LX-spr22
-export CS142_2022_PATH=/Users/tristennollman/Documents/Spring_Quarter_2022/CS142
-export TOCK_SPRING_PATH=/Users/tristennollman/Documents/Spring_Quarter_2022/tock
-export NOX=/Users/tristennollman/Documents/CS_Projects/nox
-export PROJECTS=/Users/tristennollman/Documents/CS_Projects/
-export LVIM=/Users/tristennollman/.local/bin/lvim
-
-alias CS140E="cd $CS140E_2022_PATH"
-alias CS240LX="cd $CS240LX_2022_PATH"
-alias CS142="cd $CS142_2022_PATH"
-alias tock-spring-2022="cd $TOCK_SPRING_PATH"
-alias nox="cd $NOX"
-alias lvim="$LVIM"
+# alias ohmyzsh="mate ~/
 alias l="ls -al"
-alias proj="cd $PROJECTS"
 
 alias ga="git add ."
 alias gs="git status"
 alias gp="git push"
 alias gup="git pull upstream main"
 alias gc="git commit -m"
+alias cal="calcurse"
 
-# Created by `pipx` on 2022-07-31 22:28:35
-export PATH="$PATH:/Users/tristennollman/.local/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
