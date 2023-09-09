@@ -6,6 +6,7 @@ function M.setup()
     local on_attach = function(_, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
         require('coq_nvim').on_attach()
+        coq.ensure_lsp_capabilities()
     end
 
     local servers = {'zls'}

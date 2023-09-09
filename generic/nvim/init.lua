@@ -53,13 +53,20 @@ vim.opt.rtp:append("/Users/tristen-macbook/.config/nvim")
 require('plugins/plugins')
 
 -- set colorscheme, this is done after the plugins since we get the theme from a plugin 
-vim.cmd.colorscheme('onedark_dark')
+vim.cmd.colorscheme('rose-pine')
 -- setup webdev icons (general glyphs plugin)
 require("plugins/webdevicons").setup()
 -- setup mason for LSP management
 require("mason").setup()
--- setup LSP to use COQ_nvim for better completion experience
-require("lspconfig").clangd.setup{}
+
+-- Lang server stuff
+local lsp = require "lspconfig"
+
+-- clangd language server
+lsp.clangd.setup{}
+-- Ensure coq enabled with lsp integration
+lsp.clangd.setup(require("coq").lsp_ensure_capabilities())
+
 -- setup ZLS
 require("plugins/zls").setup()
 -- setup neotree 
@@ -67,10 +74,18 @@ require("plugins/neotree").setup()
 -- setup rust 
 require("plugins/rust").setup()
 require("plugins/transparent").setup()
+require("plugins/luasnips").config()
 
-vim.cmd('let g:UltiSnipsExpandTrigger="<return>"')
-vim.cmd('let g:UltiSnipsJumpFo2rwardTrigger="<c-b>"')
-vim.cmd('let g:UltiSnipsJumpBackwardTrigger="<c-z>"')
+-- Snippet keybinds, ENTER will confirm selction of highlighted snippet, 
+
+
+-- VimTex stuff 
+syntax = enable
+vim.cmd('let g:vimtex_view_general_viewer = "zathura"')
+vim.cmd('let g:tex_flavor = "latex"')
+vim.cmd('let g:vimtex_quickfix_mode=0')
+vim.cmd('set conceallevel=2')
+vim.cmd('let g:tex_conceal="abdmg"')
 -- ############ END PLUGINS #################################
 
 
@@ -78,34 +93,8 @@ vim.cmd('let g:UltiSnipsJumpBackwardTrigger="<c-z>"')
 -- #########################################################
 --                  AUTOCMDs !!!
 -- #########################################################
-
--- Shows diagnostic popup on a cursor hold (hover over diagnostic)
-vim.api.nvim_create_autocmd('CursorHold', {
-    pattern = {'*'},
-    desc = 'Display diagnostic popup when cursor hovers over it.',
-    callback = function(event)
-        vim.diagnostic.open_float(nil, { focusable = false })
-    end
-})
-
--- format rust files on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = {'*.rs'},
-    desc = 'Format rust files on save.',
-    callback = function(event)
-        vim.lsp.buf.formatting_sync(nil, 200)
-    end
-})
-
--- makes sure TS highlighting is on, and COQ completions is on
-vim.api.nvim_create_autocmd('VimEnter', {
-    pattern = {'*'},
-    desc = 'Open neotree even when we call nvim without any args.',
-    callback = function(event)
-        vim.cmd("TSEnable highlight")
-        vim.cmd("COQnow")
-    end
-})
+require("autocommands/generic")
+require("autocommands/number-toggle")
 
 -- ################## END AUTOCMDs #############################
 
@@ -129,3 +118,19 @@ vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
 vim.keymap.set("i", "kj", "<Esc>");
 vim.keymap.set("n", "<leader>f", ":NeoTreeRevealToggle<CR>")
 
+-- coq repl
+vim.g.coq_settings = {
+    ["keymap.eval_snips"] = '<leader>r',
+    ["keymap.jump_to_mark"] = '<leader>;' 
+}
+
+-- floaterm keymaps
+vim.g.floaterm_keymap_new = '<leader>t'
+vim.g.floaterm_keymap_prev = '<leader>p'
+vim.g.floaterm_keymap_next = '<leader>n'
+vim.g.floaterm_keymap_toggle = '<leader>d'
+
+
+-- floaterm opts
+vim.g.floaterm_width = 0.9
+vim.g.floaterm_height = 0.9

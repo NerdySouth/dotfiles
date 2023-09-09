@@ -2,8 +2,8 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
     -- Plug('nyoom-engineering/oxocarbon.nvim')
-    Plug('olimorris/onedarkpro.nvim')
-
+    -- Plug('olimorris/onedarkpro.nvim')
+    Plug('rose-pine/neovim')
     -- makes all backgrounds transparent
     Plug('xiyaowong/nvim-transparent')
 
@@ -29,11 +29,11 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     -- Zig plugin
     Plug('ziglang/zig.vim')
 
+    -- eww config language
+    Plug('elkowar/yuck.vim')
     -- Snippet engine: Track the engine.
-    Plug('SirVer/ultisnips')
-
+    Plug('L3MON4D3/LuaSnip')
     -- Snippets are separated from the engine. Add this if you want them:
-    Plug('honza/vim-snippets')
 
     -- modern completetion
     Plug('ms-jpq/coq_nvim', {branch = 'coq'})
@@ -49,7 +49,12 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     -- icons come last
     Plug('nvim-tree/nvim-web-devicons')
 
-    -- better line number behavior
-    Plug('jeffkreeftmeijer/vim-numbertoggle')
+    -- fish script sytax highlighting
+    Plug('nickeb96/fish.vim')
 
+    -- LaTex support 
+    Plug('lervag/vimtex')
+
+    -- popup terminal
+    Plug('voldikss/vim-floaterm')
 vim.call('plug#end')
