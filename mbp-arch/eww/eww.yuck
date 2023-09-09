@@ -1,0 +1,136 @@
+;; variables
+(defpoll batt_state :interval "2s" "./scripts/battery.sh -s")
+(defpoll batt_level :interval "10s" "./scripts/battery.sh -p")
+(defpoll time :interval "5s" "./scripts/date-time.sh -t")
+(defpoll date :interval "2m" "./scripts/date-time.sh -d")
+(defpoll wifi-name :interval "2s" "./scripts/wifi.sh -n")
+(defpoll ram-used :interval "5s" "./scripts/memory.sh -u")
+(defpoll workspace :interval "0.25s" "./scripts/workspace.sh -c")
+;; WINDOW DEFINITIONS
+
+(defwindow bar
+        :monitor 0
+        :geometry (geometry :x "0%"
+                            :y "0%"
+                            :width "95%"
+                            :height "3%"
+                            :anchor "top center")
+        :stacking "bg"
+        :exclusive true
+        :focusable false
+  (_bar_layout)
+)
+
+;; Power Menu window
+(defwindow power_menu
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               :width "100%"
+                               :height "100%"
+                               :anchor "top center")
+           :stacking "overlay"
+           :exclusive false
+           :focusable false
+  (power_menu_layout)
+)
+
+
+;; WIDGET DEFINITIONS
+
+;; bar top level widget
+(defwidget _bar_layout []
+  (box :class "bar-box" 
+       :space-evenly false 
+       :orientation "horizontal"
+    (_left)
+    (_right)
+  ))
+
+
+
+;; bar: widgets that align on the left
+(defwidget _left []
+  (box :class "left-box" :space-evenly false :spacing 2
+  (eventbox :onhover "eww update power=true"
+            :onhoverlost "eww update power=false"
+    (box :orientation "h" :space-evenly false :spacing 2
+      (revealer :transition "slideright"
+                :reveal power
+                :duration "250ms" 
+          (_buttons)
+      )
+      (_battery))
+     
+    )
+   (_workspace)
+   (_memory)
+  
+   ))
+
+(defvar power false)
+
+;; bar: widgets that align on right
+(defwidget _right []
+  (box :class "right-box" 
+       :orientation "horizontal" 
+       :valign "start" :halign "end" 
+       :hexpand true :space-evenly false 
+       :spacing 10
+    (_wifi)
+    (_clock)
+    (_date)
+    ))
+
+;; generic clock widget
+(defwidget _clock []
+  (button :class "clock-btn" :tooltip "clock" time)
+)
+;; generic date widget
+(defwidget _date []
+  (button :class "date-btn" date)
+)
+
+;; generic wifi widget
+(defwidget _wifi []
+    (button :class "wifi-btn" " ${wifi-name}")
+)
+
+;; generic wifi widget
+(defwidget _memory []
+    (button :class "memory-btn" "󰍛 ${ram-used}")
+)
+
+(defwidget _workspace []
+  (label :class "workspace" :text workspace)
+  )
+
+;; generic battery widget
+(defwidget _battery []
+  (circular-progress :class batt_state
+                   :value batt_level
+                   :thickness 3
+                   :clockwise false
+                   :start-at 75
+                   :width 30
+                   :height 30
+         (label :text batt_level :class "radial-label-batt-${batt_state}" :show_truncated false :wrap false :angle 0.0))
+  )
+
+;; power related buttons (shutdown, reboot, logout)
+(defwidget _buttons []  
+    (box :class "buttons_box" 
+         :spacing 10
+         :space-evenly true
+         :orientation "horizontal" 
+         :halign "end" :valign "start" 
+      
+      (button :onclick "shutdown now" :tooltip "Shutdown" "⏻")
+      (button :onclick "killall Hyprland" "󰍃")
+      (button :onclick "reboot" "")
+      (button :onclick "eww close power_menu && eww open bar" ""))
+    )
+
+
+
+
