@@ -1,0 +1,10 @@
+### Output configuration
+output DP-1 bg /home/tristen/Wallpapers/tree-in-water.jpg fill
+output DP-3 bg /home/tristen/Wallpapers/vert-tree.jpg fill
+output DP-4 bg /home/tristen/Wallpapers/vert-tree.jpg fill
+
+output DP-3 res 1920x1200 pos 3760,0 transform 270 subpixel vrgb
+output DP-1 scale 2 res 5120x2160 pos 1200,0 subpixel rgb render_bit_depth 10
+output DP-4 res 1920x1200 pos 0,0 transform 270 subpixel vrgb
+
+
