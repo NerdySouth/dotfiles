@@ -3,7 +3,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
     -- Plug('nyoom-engineering/oxocarbon.nvim')
     -- Plug('olimorris/onedarkpro.nvim')
-    Plug('rose-pine/neovim')
+    Plug('folke/tokyonight.nvim')
     -- makes all backgrounds transparent
     Plug('xiyaowong/nvim-transparent')
 

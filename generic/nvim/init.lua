@@ -53,7 +53,7 @@ vim.opt.rtp:append("/Users/tristen-macbook/.config/nvim")
 require('plugins/plugins')
 
 -- set colorscheme, this is done after the plugins since we get the theme from a plugin 
-vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('tokyonight-night')
 -- setup webdev icons (general glyphs plugin)
 require("plugins/webdevicons").setup()
 -- setup mason for LSP management
