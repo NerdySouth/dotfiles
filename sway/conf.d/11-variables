@@ -12,4 +12,4 @@ set $lock XF86Eject
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-set $menu fuzzel -b $overlay -t $text -s $highlight-med -S $rose
+set $menu fuzzel 

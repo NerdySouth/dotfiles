@@ -78,9 +78,8 @@
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
+    # $mod+h or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
@@ -119,7 +118,7 @@
     bindsym $lock exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --grace 2 --fade-in 0.2
     
     # toggle all displays off
-    bindsym $mod+$lock exec fish ~/.config/sway/toggle-displays.fish
+    bindsym $mod+$lock exec fish ~/.config/sway/scripts/toggle-displays.fish
 
 
 # Resizing containers:
@@ -145,4 +144,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# bluetooth menu
+bindsym $mod+b exec DMENU_BLUETOOTH_LAUNCHER=fuzzel dmenu-bluetooth
 
