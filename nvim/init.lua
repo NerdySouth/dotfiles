@@ -74,7 +74,6 @@ require("plugins/neotree").setup()
 -- setup rust 
 require("plugins/rust").setup()
 require("plugins/transparent").setup()
-require("plugins/luasnips").config()
 
 -- Snippet keybinds, ENTER will confirm selction of highlighted snippet, 
 
@@ -121,6 +120,6 @@ vim.keymap.set("n", "<leader>f", ":Neotree reveal toggle<CR>")
 -- coq repl
 vim.g.coq_settings = {
     ["keymap.eval_snips"] = '<leader>r',
-    ["keymap.jump_to_mark"] = '<leader>n' 
+    ["keymap.jump_to_mark"] = '<leader>;' 
 }
 

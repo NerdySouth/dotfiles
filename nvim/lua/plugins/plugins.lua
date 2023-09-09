@@ -31,20 +31,16 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
     -- eww config language
     Plug('elkowar/yuck.vim')
-    -- Snippet engine: Track the engine.
-    Plug('L3MON4D3/LuaSnip')
-    -- Snippets are separated from the engine. Add this if you want them:
-
+    
     -- modern completetion
     Plug('ms-jpq/coq_nvim', {branch = 'coq'})
     -- 9000+ Snippets
     Plug('ms-jpq/coq.artifacts', {branch = 'artifacts'})
     
     -- Rust tools
-    Plug('neovim/nvim-lspconfig')
     Plug('simrat39/rust-tools.nvim')
 
-    -- twilight uses treesitter to try and latch to function contexts
+    -- Treesitter
     Plug('nvim-treesitter/nvim-treesitter')
     -- icons come last
     Plug('nvim-tree/nvim-web-devicons')

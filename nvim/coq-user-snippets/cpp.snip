@@ -1,5 +1,37 @@
-snippet snip
-alias s
-    snippet ${1:name}
-    alias ${2:altname}
-        ${3:snippet}
+# function comment snip
+snippet function_comment
+alias fc
+    /* function: ${1:function_name}
+     * ------------------------------
+     * ${2:desc}
+     *
+     * Params:
+     *      - ${3:params}
+     *
+     * return: 
+     *      - ${0:return}
+     */
+
+# class comment snip
+snippet class_comment
+alias clc
+    /* Class: ${1:class_name}
+     * ------------------------------
+     * ${2:desc}
+     */
+
+# file header comment
+snippet header
+alias head
+    /***********************************************************************
+    * FILENAME :        ${1:file_name} 
+    *
+    * DESCRIPTION :
+    *       ${5:desc}
+    *
+    * NOTES :
+    *       ${0:notes}
+    *
+    * AUTHOR :    ${2:author} ${3:email}
+    * START DATE :    ${4:start_date} 
+    ***********************************************************************/
