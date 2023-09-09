@@ -1,0 +1,33 @@
+
+
+# Themes need to be placed in "$XDG_CONFIG_DIR/macchina/themes" beforehand.
+# e.g.:
+#  if theme path is /home/foo/.config/macchina/themes/Sodium.toml
+#  theme should be uncommented and set to "Sodium"
+#
+theme = "rose-pine"
+current_shell = true
+# Displays only the specified readouts.
+# Accepted values (case-sensitive):
+#   - Host
+#   - Machine
+#   - Kernel
+#   - Distribution
+#   - OperatingSystem
+#   - DesktopEnvironment
+#   - WindowManager
+#   - Resolution
+#   - Backlight
+#   - Packages
+#   - LocalIP
+#   - Terminal
+#   - Shell
+#   - Uptime
+#   - Processor
+#   - ProcessorLoad
+#   - Memory
+#   - Battery
+#   - GPU
+#   - DiskSpace
+# Example:
+show = ["Host", "Kernel", "Distribution", "WindowManager", "Resolution", "Packages", "Terminal", "Shell", "Uptime", "Processor", "ProcessorLoad", "Memory"]
