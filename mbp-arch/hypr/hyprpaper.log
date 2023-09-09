@@ -1,0 +1,6 @@
+[LOG] Welcome to hyprpaper!
+built from commit 60013ee65566ec7601c367829da2560d7b8638fa ()
+[LOG] hyprpaper socket started at /tmp/hypr/d87d2dac0b1385a4ab944df293bc48877564106c_1671945366/.hyprpaper.sock (fd: 4)
+[WARN] Monitor eDP-1 does not have a target! A wallpaper will not be created.
+[LOG] Accepted incoming socket connection request on fd 5
+[LOG] Received a request: wallpaper eDP-1,anime/788691.jpg

@@ -53,8 +53,7 @@ vim.opt.rtp:append("/Users/tristen-macbook/.config/nvim")
 require('plugins/plugins')
 
 -- set colorscheme, this is done after the plugins since we get the theme from a plugin 
-vim.cmd('colorscheme oxocarbon')
-
+vim.cmd.colorscheme('onedark_dark')
 -- setup webdev icons (general glyphs plugin)
 require("plugins/webdevicons").setup()
 -- setup mason for LSP management
@@ -67,9 +66,10 @@ require("plugins/zls").setup()
 require("plugins/neotree").setup()
 -- setup rust 
 require("plugins/rust").setup()
+require("plugins/transparent").setup()
 
 vim.cmd('let g:UltiSnipsExpandTrigger="<return>"')
-vim.cmd('let g:UltiSnipsJumpForwardTrigger="<c-b>"')
+vim.cmd('let g:UltiSnipsJumpFo2rwardTrigger="<c-b>"')
 vim.cmd('let g:UltiSnipsJumpBackwardTrigger="<c-z>"')
 -- ############ END PLUGINS #################################
 
@@ -78,9 +78,8 @@ vim.cmd('let g:UltiSnipsJumpBackwardTrigger="<c-z>"')
 -- #########################################################
 --                  AUTOCMDs !!!
 -- #########################################################
--- this needs to be converted to lua eventually, but im lazy
--- It shows diagnostic popup on a cursor hold (hover over diagnostic)
--- vim.cmd("autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focusable = false })")
+
+-- Shows diagnostic popup on a cursor hold (hover over diagnostic)
 vim.api.nvim_create_autocmd('CursorHold', {
     pattern = {'*'},
     desc = 'Display diagnostic popup when cursor hovers over it.',
@@ -89,7 +88,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
     end
 })
 
--- vim.cmd("autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)")
+-- format rust files on save
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = {'*.rs'},
     desc = 'Format rust files on save.',
@@ -98,14 +97,11 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end
 })
 
--- vim.cmd("autocmd VimEnter * call StartUp()")
--- ensures we always have neotree showing even if we didnt open a specific file or dir.
--- also makes sure TS highlighting is on, and COQ completions is on
+-- makes sure TS highlighting is on, and COQ completions is on
 vim.api.nvim_create_autocmd('VimEnter', {
     pattern = {'*'},
     desc = 'Open neotree even when we call nvim without any args.',
     callback = function(event)
-        vim.cmd("Neotree filesystem reveal left")
         vim.cmd("TSEnable highlight")
         vim.cmd("COQnow")
     end
@@ -119,17 +115,17 @@ vim.api.nvim_create_autocmd('VimEnter', {
 -- #############################################################
 
 local map = require("keys/remap").map 
+vim.g.mapleader = " "
+
 
 -- use ctrl-[hjkl] to select active buffer
-map("n", "<silent>", "<C-k> :wincmd k<CR>")
-map("n", "<silent>", "<C-j> :wincmd j<CR>")
-map("n", "<silent>", "<C-h> :wincmd h<CR>")
-map("n", "<silent>", "<C-l> :wincmd l<CR>")
+vim.keymap.set("n", "<leader>h", ":wincmd h<CR>")
+vim.keymap.set("n", "<leader>j", ":wincmd j<CR>")
+vim.keymap.set("n", "<leader>k", ":wincmd k<CR>")
+vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
 
--- press ctrl+n to toggle neotree 
--- map("n", "<silent>", "<C-f> :NeoTreeFocusToggle<CR>")
-vim.cmd("nmap <silent> <C-n> :NeoTreeFocusToggle<CR>")
 
 -- press i to enter insert mode, and kj to exit insert mode
-map("i", "kj", "<Esc>")
+vim.keymap.set("i", "kj", "<Esc>");
+vim.keymap.set("n", "<leader>f", ":NeoTreeRevealToggle<CR>")
 
