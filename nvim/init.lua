@@ -116,7 +116,7 @@ vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
 
 -- press i to enter insert mode, and kj to exit insert mode
 vim.keymap.set("i", "kj", "<Esc>");
-vim.keymap.set("n", "<leader>f", ":NeoTreeRevealToggle<CR>")
+vim.keymap.set("n", "<leader>f", ":Neotree reveal toggle<CR>")
 
 -- coq repl
 vim.g.coq_settings = {
