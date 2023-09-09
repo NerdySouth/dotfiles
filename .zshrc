@@ -141,6 +141,7 @@ alias ga="git add ."
 alias gs="git status"
 alias gp="git push"
 alias gup="git pull upstream main"
+alias gc="git commit -m"
 
 # Created by `pipx` on 2022-07-31 22:28:35
 export PATH="$PATH:/Users/tristennollman/.local/bin"
