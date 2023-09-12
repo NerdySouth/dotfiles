@@ -35,3 +35,21 @@ alias head
     * AUTHOR :    ${2:author} ${3:email}
     * START DATE :    ${4:start_date} 
     ***********************************************************************/
+
+# generic for loop
+snippet forloop
+alias for
+    for(size_t ${1:i}; ${1:i} < ${2:count}; ${3:movement}) {
+        ${4:body}
+    }
+
+# prelude for new main.cc
+snippet prelude
+    #include <stdio.h>
+    #include <iostream>
+    using namespace std;
+
+    int main(int argc, char* argv[]) {
+        $0
+        return 0;
+    }

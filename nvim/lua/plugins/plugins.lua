@@ -53,5 +53,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
     -- plugin for running formatters on buffers
     Plug('sbdchd/neoformat')
-
+    
+    -- Wiki 
+    Plug('vimwiki/vimwiki')
 vim.call('plug#end')
