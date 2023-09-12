@@ -1,10 +1,19 @@
 ### Output configuration
-output DP-1 bg /home/tristen/Wallpapers/tree-in-water.jpg fill
-output DP-3 bg /home/tristen/Wallpapers/vert-tree.jpg fill
-output DP-4 bg /home/tristen/Wallpapers/vert-tree.jpg fill
+workspace 1 output DP-3
+workspace 2 output DP-2
+workspace 3 output DP-1
+workspace 4 output HDMI-A-1
 
-output DP-3 res 1920x1200 pos 3760,0 transform 270 subpixel vrgb
-output DP-1 scale 2 res 5120x2160 pos 1200,0 subpixel rgb render_bit_depth 10
-output DP-4 res 1920x1200 pos 0,0 transform 270 subpixel vrgb
+output HDMI-A-1 res 1920x1200 pos 0,0 transform 90 
+output $LEFTDP res 1920x1200 pos 1200,0 transform 90
+output $ULTRAWIDE scale 1 res 5120x2160 pos 2400,0 subpixel rgb render_bit_depth 10
+output DP-1 res 1920x1200 pos 7520,0 transform 270
+
+
+
+output $ULTRAWIDE bg /home/tristen/the-source/Spread/out/ULTRAWIDE.png fill
+output $RIGHTDP bg /home/tristen/the-source/Spread/out/DP-RIGHT.png fill
+output $LEFTDP bg /home/tristen/the-source/Spread/out/DP-LEFT.png fill
+output HDMI-A-1 bg /home/tristen/the-source/Spread/out/HDMI-LEFT.png fill
 
 
