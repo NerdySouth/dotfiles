@@ -1,9 +1,9 @@
 ### Variables
 
 # display variables
-set $ULTRAWIDE DP-3
-set $RIGHTDP DP-1
-set $LEFTDP DP-2
+set $ULTRAWIDE DP-1
+set $RIGHTDP DP-2
+set $LEFTDP DP-3
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim

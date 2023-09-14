@@ -1,13 +1,13 @@
 ### Output configuration
-workspace 1 output DP-3
-workspace 2 output DP-2
-workspace 3 output DP-1
+workspace 1 output $ULTRAWIDE
+workspace 2 output $LEFTDP
+workspace 3 output $RIGHTDP
 workspace 4 output HDMI-A-1
 
 output HDMI-A-1 res 1920x1200 pos 0,0 transform 90 
 output $LEFTDP res 1920x1200 pos 1200,0 transform 90
 output $ULTRAWIDE scale 1 res 5120x2160 pos 2400,0 subpixel rgb render_bit_depth 10
-output DP-1 res 1920x1200 pos 7520,0 transform 270
+output $RIGHTDP res 1920x1200 pos 7520,0 transform 270
 
 
 

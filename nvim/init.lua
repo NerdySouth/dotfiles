@@ -42,6 +42,8 @@ vim.opt.signcolumn = "yes"
 
 -- set the runtime path for neovim 
 vim.opt.rtp:append("/Users/tristen-macbook/.config/nvim")
+vim.opt.termguicolors = true
+
 -- ############ END GENERIC OPTIONS #######################
 
 
