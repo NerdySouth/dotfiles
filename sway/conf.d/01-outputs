@@ -10,10 +10,3 @@ output $ULTRAWIDE scale 1 res 5120x2160 pos 2400,0 subpixel rgb render_bit_depth
 output $RIGHTDP res 1920x1200 pos 7520,0 transform 270
 
 
-
-output $ULTRAWIDE bg /home/tristen/the-source/Spread/out/ULTRAWIDE.png fill
-output $RIGHTDP bg /home/tristen/the-source/Spread/out/DP-RIGHT.png fill
-output $LEFTDP bg /home/tristen/the-source/Spread/out/DP-LEFT.png fill
-output HDMI-A-1 bg /home/tristen/the-source/Spread/out/HDMI-LEFT.png fill
-
-

@@ -33,3 +33,6 @@ include ~/.config/sway/conf.d/*
     
     # start notification daemon
     exec mako
+
+    # start dynamic wallpaper service
+    exec sunpaper.sh -d
