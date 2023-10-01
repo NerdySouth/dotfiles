@@ -75,6 +75,7 @@ require("plugins/zls").setup()
 require("plugins/neotree").setup()
 -- setup rust 
 require("plugins/rust").setup()
+-- setup transparency
 require("plugins/transparent").setup()
 
 -- Snippet keybinds, ENTER will confirm selction of highlighted snippet, 
