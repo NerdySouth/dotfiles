@@ -42,6 +42,8 @@ vim.opt.signcolumn = "yes"
 
 -- set the runtime path for neovim 
 vim.opt.rtp:append("/Users/tristen-macbook/.config/nvim")
+vim.opt.termguicolors = true
+
 -- ############ END GENERIC OPTIONS #######################
 
 
@@ -73,6 +75,7 @@ require("plugins/zls").setup()
 require("plugins/neotree").setup()
 -- setup rust 
 require("plugins/rust").setup()
+-- setup transparency
 require("plugins/transparent").setup()
 
 -- Snippet keybinds, ENTER will confirm selction of highlighted snippet, 
