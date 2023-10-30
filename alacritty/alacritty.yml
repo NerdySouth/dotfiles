@@ -576,18 +576,17 @@ live_config_reload: true
 # in the order they were defined in.
 key_bindings:
   # Tmux bindings
-  - { key: Backslash,      mods: Super,                          chars: "\x01\x7c"              }
-  - { key: D,              mods: Super,                          chars: "\x01\x64"              }
-  - { key: T,              mods: Super,                          chars: "\x01\x63"              }
-  - { key: W,              mods: Super,                          chars: "\x01\x78"              }
-  - { key: Minus,          mods: Super,                          chars: "\x01\x2d"              }
+  - { key: Backslash,      mods: Alt,                          chars: "\x01\x7c"              }
+  - { key: D,              mods: Alt,                          chars: "\x01\x64"              }
+  - { key: T,              mods: Alt,                          chars: "\x01\x63"              }
+  - { key: W,              mods: Alt,                          chars: "\x01\x78"              }
+  - { key: Minus,          mods: Alt,                          chars: "\x01\x2d"              }
   - { key: H,              mods: Alt,                          chars: "\x01\x1b\x5b\x44"      }
   - { key: J,              mods: Alt,                          chars: "\x01\x1b\x5b\x42"      }
   - { key: K,              mods: Alt,                          chars: "\x01\x1b\x5b\x41"      }
   - { key: L,              mods: Alt,                          chars: "\x01\x1b\x5b\x43"      }
-  - { key: RBracket,       mods: Super,                          chars: "\x01\x6e"              }
-  - { key: LBracket,       mods: Super,                          chars: "\x01\x70"              }
-  - { key: N,              mods: Super,                          action: SpawnNewInstance              }
+  - { key: RBracket,       mods: Alt,                          chars: "\x01\x6e"              }
+  - { key: LBracket,       mods: Alt,                          chars: "\x01\x70"              }
 
 
     #debug:
