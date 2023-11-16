@@ -56,4 +56,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     
     -- Wiki 
     Plug('vimwiki/vimwiki')
+
+    -- verilog 
+    Plug('vhda/verilog_systemverilog.vim')
 vim.call('plug#end')
