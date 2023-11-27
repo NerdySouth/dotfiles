@@ -78,7 +78,7 @@ end
 
 function read_confirm
     while true
-        read -l -P 'Do you want to continue? [y/N] ' confirm
+        read -l -P 'Do you have SSH access to git? [y/N] ' confirm
 
         switch $confirm
             case Y y
@@ -89,15 +89,13 @@ function read_confirm
     end
 end
 
-function get_dotfiles
-    cd ~
-    echo (set_color green) "generating SSH key and copying to clipboard." (set_color normal)
-    ssh-keygen -t ed25519 -C "Tristen Nollman <tristen@tristen.wtf>"
-    bat ~/.ssh/id_ed25519.pub | wl-copy
-    echo "Done. Please add key to github and press enter to continue."
+function setup_dotfiles
+
+    echo (set_color green) "cloning dotfiles..."(set_color normal)
     if read_confirm
-        echo (set_color green) "cloning dotfiles..."(set_color normal)
         git clone git@github.com:NerdySouth/dotfiles.git
+    else
+        git clone https://github.com/NerdySouth/dotfiles.git
         cd dotfiles
         git checkout shadowrealm
         echo (set_color green) "Setting up links to dotfiles" (set_color normal)
