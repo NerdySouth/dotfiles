@@ -12,25 +12,25 @@ function install_packages
     echo (set_color green)"Beginning package installs. This may take a while..."
     # install packages from offical repos
     echo "Starting with offical repo packages..."(set_color normal)
-    sudo pacman -S --needed hyprland neovim waybar mako fuzzel ripgrep bat bottom eza alacritty easyeffects transmission-gtk signal-desktop kicad kicad-library kicad-library-3d pavucontrol bluez bluezutils nvidia-dkms wallutils wl-clipboard tmux swayidle tailscale python-pipx nvtop ncdu minicom openconnect grim slurp docker xdg-desktop-portal-hyprland flatpak firefox exfatprogs dolphin dhcpcd btrfs-progs bitwarden curl texlive zathura zathura-pdf-mupdf newsboat dmenu
+    sudo pacman -S --needed hyprland neovim waybar mako fuzzel ripgrep bat bottom eza alacritty easyeffects transmission-gtk signal-desktop kicad kicad-library kicad-library-3d pavucontrol bluez bluezutils nvidia-dkms wallutils wl-clipboard tmux swayidle tailscale python-pipx nvtop ncdu minicom openconnect grim slurp docker xdg-desktop-portal-hyprland flatpak firefox exfatprogs dolphin dhcpcd btrfs-progs bitwarden curl texlive zathura zathura-pdf-mupdf newsboat dmenu nerd-fonts
     echo (set_color green)"Done!"(set_color normal)
 
 
     echo (set_color green)"Moving on to non-offical packages..."(set_color normal)
     # install packages from unofficial repos
-    mkdir -pv ~/the-source/
+    cd ~/the-source
     # install bluetooth driver 
     git clone https://github.com/lwfinger/rtw89.git
     cd rtw89
     make
     sudo make install
-    cd ~/the-source
+    cd ~/the-source/
 
     # install notion
     git clone https://aur.archlinux.org/notion-app-electron.git
     cd notion-app-electron
     makepkg -si
-    cd ~/the-source
+    cd ~
 
     # install rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -51,6 +51,27 @@ function install_packages
 
     # install tide prompt
     fisher install IlanCosman/tide@v5
+
+    # install sunwait for sunpaper.sh
+    cd ~/the-source/
+    git clone https://github.com/risacher/sunwait.git
+    cd sunwait
+    make sunwait
+    cp sunwait ~/bin
+
+    # install swww for sunpaper.sh
+    cd ~/the-source/
+    git clone https://github.com/Horus645/swww.git
+    cd swww
+    cargo build --release
+    cp target/release/{swww,swww-daemon} ~/.cargo/bin
+
+    # install SF Mono fonts
+    cd ~/the-source/
+    git clone https://github.com/supercomputra/SF-Mono-Font.git
+    cd SF-Mono-Font
+    sudo cp -v *.otf /usr/share/fonts/OTF/
+    fc-cache
 
     echo (set_color green)"Done!"(set_color normal)
 end
@@ -100,5 +121,33 @@ function get_dotfiles
     end
 end
 
+function setup_pkgconf
+
+    echo "Setting up makepkg to use memory-based files to speed up compiles"
+    mkdir -pv ~/.config/pacman
+    mkdir -pv ~/the-source
+    sudo cp /etc/makepkg.conf /home/tristen/.config/pacman
+    sudo chown -R tristen /home/tristen/.config/pacman
+
+    set CONF ~/.config/pacman/makepkg.conf
+
+    # turn on native optimizations
+    sed -i s/-march=x86-64[[:space:]]-mtune=generic/-march=native/ $CONF
+
+    # enable parallel compilation
+    sed -i s/^\#MAKEFLAGS=\"-j.\*\"/MAKEFLAGS=\"-j12\"/ $CONF
+
+    # enable use of tmpfs for building, uses memory file IO
+    sed -i s/^\#BUILDDIR/BUILDDIR/ $CONF
+
+    # enable native opts for rust
+    echo "RUSTFLAGS=\"-C opt-level=2 -C target-cpu=native\"" >>$CONF
+    echo "PKGDEST=\"/home/tristen/bin/\"" >>$CONF
+    echo "SRCDEST=\"/home/tristen/the-source\"" >>$CONF
+
+    echo (set_color green)"Done!"(set_color normal)
+end
+
+setup_pkgconf
 get_dotfiles
 install_packages
