@@ -17,30 +17,29 @@
 # function takes a single argument: the username for the new account to be made
 function setup_new_system() {
     USER=$1
-    
+
+    echo "Updating system"
+    sudo pacman -Syyu
+    # install sudo and fish
+    pacman -S --needed sudo fish
+
     echo "Creating user $USER..."
     # create user account
-    sudo useradd -m $USER
+    useradd -m $USER
     
     echo "Please enter a password for the user."
     # create password for user
-    sudo passwd $USER
+    passwd $USER
     
     echo "Adding new user to group: wheel"
     # add user to the wheel group
-    sudo usermod -aG wheel $USER
+    usermod -aG wheel $USER
     
     echo "Enabling sudo for group: wheel"
     # enable sudo for wheel group without password
     echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
    
-    echo "Updating system"
-    # switch to new user account
-    sudo pacman -Syyu
     
-    echo "Installing fish"
-    # install fish 
-    sudo pacman -S fish
 }
 
 setup_new_system "testUser"

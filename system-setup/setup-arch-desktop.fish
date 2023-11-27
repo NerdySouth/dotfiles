@@ -37,6 +37,9 @@ function install_packages
     fish_add_path ~/.cargo/bin/
 
     # install rust packages via cargo
+    set -x OPENSSL_DIR=/etc/ssl
+    set -x OPENSSL_INCLUDE_DIR=/usr/include/openssl
+    set -x OPENSSL_LIB_DIR=/usr/lib
     cargo install macchina cargo-update
 
     # install vimplug
@@ -96,3 +99,6 @@ function get_dotfiles
         echo (set_color green) "Done!" (set_color normal)
     end
 end
+
+get_dotfiles
+install_packages
