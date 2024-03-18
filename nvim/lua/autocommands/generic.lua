@@ -39,3 +39,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         vim.cmd("undojoin | Neoformat")
     end
 })
+
+
+-- run make on tex files on write
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = {'*.tex'},
+    desc = 'Build latex doc on each save',
+    callback = function(event)
+        vim.cmd("!make")
+    end
+})

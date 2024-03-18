@@ -18,13 +18,13 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 26px;
+    font-family: FiraMonoNerdFont, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 20px;
 }
 
 window#waybar {
-    background-color: #232136;
-    color: #ffffff;
+    background: transparent;
+    color: #000000;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -106,9 +106,11 @@ button:hover {
 #scratchpad,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
+    color: #000000;
 }
-
+#brightness {
+    padding-left: 500px;
+}
 #window,
 #workspaces {
     margin: 0 4px;
@@ -124,29 +126,23 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    background-color: #2a273f;
-}
 
 #battery {
-    background-color: #393552;
     color: #000000;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: #000000;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: #000000;
+        color: #ffffff;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -160,23 +156,23 @@ label:focus {
 }
 
 #cpu {
-    color: #eb6f92;
+    color: #000000;
 }
 
 #memory {
-    color: #9ccfd8;
+    color: #000000;
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: #000000;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    color: #000000;
 }
 
 #network {
-    color: #9ccfd8;
+    color: #000000;
 }
 
 #network.disconnected {
@@ -184,48 +180,27 @@ label:focus {
 }
 
 #pulseaudio {
-    color: #eb6f92;
+    color: #000000;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    color: #000000;
 }
 
 #wireplumber {
-    background-color: #fff0f5;
     color: #000000;
 }
 
 #wireplumber.muted {
-    background-color: #f53c3c;
+    color: #000000;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
+    color: #000000;
     min-width: 100px;
 }
 
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
 
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#tray {
-    background-color: #2980b9;
-}
 
 #tray > .passive {
     -gtk-icon-effect: dim;
@@ -236,38 +211,14 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#idle_inhibitor {
-    color: #9ccfd8;
-}
 
-#idle_inhibitor.activated {
-    color: #ea9a97;
-}
 
 #mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
+    color: #000000;
 }
 
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
 
-#mpd.stopped {
-    background-color: #90b1b1;
-}
 
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
 
 #keyboard-state {
     background: #97e1ad;

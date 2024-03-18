@@ -1,15 +1,20 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
+    "height": 48, // Waybar height (to be removed for auto height)
     "output": "eDP-1",
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [],
-    "modules-center": [],
+    "modules-left": ["custom/brightness"],
+    "modules-center": ["hyprland/window"],
     "modules-right": [ "pulseaudio", "network", "cpu", "memory", "battery",  "clock", "tray"],
      //Modules configuration
+     "custom/brightness": {
+        "format": "{}",
+         "interval": 1,
+         "exec": "fish $HOME/.config/waybar/custom_modules/screen-brightness.fish"
+    },
      "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
